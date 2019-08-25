@@ -1,7 +1,7 @@
 Heartbeat module for oarepo invenio
 ===================================
 
-A heartbeat module for oarepo invenio. It provides 3 endpoints:
+A heartbeat module for flask and OAREPO Invenio. It provides 3 endpoints:
 
 * ``.well-known/heartbeat/readiness``
 
@@ -141,3 +141,9 @@ checking database, ES connectivity):
         'oarepo-heartbeat = oarepo_heartbeat.views:blueprint',
     ],
 
+
+Flask usage:
+==============
+
+Register the ``oarepo_heartbeat.views:blueprint`` blueprint to your flask
+application and write your own readiness and liveliness signals as needed.
