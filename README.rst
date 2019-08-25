@@ -45,13 +45,10 @@ will be added to the response:
 
 .. code:: python
 
-    {
-        "status": false,
-        "checks": {
-            "Database": {
-                "status": false,
-                "message": "Error accessing database"
-            }
+    "checks": {
+        "returned_name": {
+            "status": "returned_status",
+            **returned_data
         }
     }
 
@@ -74,8 +71,11 @@ readiness probe:
 
     {
         "status": false,
-        "messages": {
-            "Database default": "Error accessing database"
+        "checks": {
+            "Database": {
+                "status": false,
+                "message": "Error accessing database"
+            }
         }
     }
 
