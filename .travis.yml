@@ -1,0 +1,36 @@
+notifications:
+  email: false
+
+sudo: false
+
+addons:
+  postgresql: 9.4
+
+services:
+  - postgresql
+  - redis
+  - rabbitmq
+
+language: python
+
+cache:
+  - pip
+
+env:
+  matrix:
+    - REQUIREMENTS=devel EXTRAS=all
+
+python:
+  - "3.6"
+
+matrix:
+  fast_finish: true
+
+install:
+  - "travis_retry pip install -e .[$EXTRAS]"
+
+script:
+  - "./run-tests.sh"
+
+after_success:
+  - coveralls
