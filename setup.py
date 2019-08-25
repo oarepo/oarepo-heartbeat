@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-#
-# This file is part of Invenio.
-# Copyright (C) 2015-2019 CERN.
-#
-# Invenio is free software; you can redistribute it and/or modify it
-# under the terms of the MIT License; see LICENSE file for more details.
-
-"""Invenio Digital Library Framework."""
-
 import os
 
 from setuptools import find_packages, setup
@@ -41,11 +31,11 @@ setup(
     version=version,
     description=__doc__,
     long_description=readme,
-    keywords='oarepo invenio',
+    keywords='oarepo invenio flask heartbeat kubernetes',
     license='MIT',
     author='UCT Prague, CESNET z.s.p.o., NTK',
     author_email='miroslav.simek@vscht.cz',
-    url='https://github.com/oarepo/oarepo',
+    url='https://github.com/oarepo/oarepo-heartbeat',
     packages=packages,
     zip_safe=False,
     include_package_data=True,
