@@ -40,6 +40,11 @@ in the form of a tuple ``(status, messages)``. The ``status`` is the ``logical a
 and messages is the union of all messages.
 
 
+**Initial implementation:**
+
+When no signals are attached, the probe always returns HTTP 200, thus checking
+if the server is running.
+
 ``.well-known/heartbeat/liveliness``
 ------------------------------------
 
@@ -69,6 +74,10 @@ is called during the readiness processing. Signal handler should return a respon
 in the form of a tuple ``(status, messages)``. The ``status`` is the ``logical and`` of returned statuses
 and messages is the union of all messages.
 
+**Initial implementation:**
+
+When no signals are attached, the probe always returns HTTP 200, thus checking
+if the server is running.
 
 ``.well-known/heartbeat/environ``
 ------------------------------------
@@ -98,6 +107,10 @@ is called during the readiness processing. Signal handler should return a respon
 as a tuple ``(status, {data})``. The ``status`` is the ``logical and`` of returned statuses
 and the data are merged into one dictionary.
 
+**Initial implementation:**
+
+When no signals are attached, the probe always returns HTTP 200 with json containing
+``libraries`` and ``python`` elements as shown above.
 
 Invenio usage:
 ==============
