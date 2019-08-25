@@ -45,10 +45,13 @@ will be added to the response:
 
 .. code:: python
 
-    response["checks"]["returned_name"] = {
-        "status": "returned_status",
-        **returned_data
+    "checks": {
+        "returned_name": {
+            "status": "returned_status",
+            **returned_data
+        }
     }
+
 
 **Initial implementation:**
 
