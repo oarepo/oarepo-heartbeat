@@ -86,7 +86,7 @@ a set of libraries present in the virtualenv and their versions.
                 "version": "3.1.1"
             }
         },
-        "python": (3, 6, 1)
+        "python": [3, 6, 1]
     }
 
 *Note:* the result is extensible, ignore unknown keys
@@ -97,3 +97,16 @@ A ``oarepo_heartbeat.environ_probe`` signal (with name ``oarepo.probe.environ``)
 is called during the readiness processing. Signal handler should return a response
 as a tuple ``(status, {data})``. The 'status' is the ``logical and`` of returned statuses
 and the data are merged into one dictionary.
+
+
+Invenio usage:
+==============
+
+To use this library on invenio, do not forget to add it to setup's blueprints:
+
+.. code:: python
+
+    'invenio_base.blueprints': [
+        'oarepo-heartbeat = oarepo_heartbeat.views:blueprint',
+    ],
+
