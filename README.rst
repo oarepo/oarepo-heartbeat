@@ -45,10 +45,13 @@ will be added to the response:
 
 .. code:: python
 
-    "checks": {
-        "returned_name": {
-            "status": "returned_status",
-            **returned_data
+    {
+        "status": false,
+        "checks": {
+            "Database": {
+                "status": false,
+                "message": "Error accessing database"
+            }
         }
     }
 
