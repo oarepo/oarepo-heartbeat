@@ -23,8 +23,11 @@ At the same time, it returns a payload explaining what is not yet ready/what wen
 
     {
         "status": false,
-        "messages": {
-            "Database default": "Error accessing database"
+        "checks": {
+            "Database": {
+                "status": false,
+                "message": "Error accessing database"
+            }
         }
     }
 
@@ -36,8 +39,8 @@ This endpoint should be called as Kubernetes readiness probe
 
 A ``oarepo_heartbeat.readiness_probe`` signal (with name ``oarepo.probe.readiness``)
 is called during the readiness processing. Signal handler should return a response
-in the form of a tuple ``(status, messages)``. The ``status`` is the ``logical and`` of returned statuses
-and messages is the union of all messages.
+in the form of a tuple ``(name, status, data)``. The ``status`` is the ``logical and``
+of returned statuses and data are passed inside the element.
 
 
 **Initial implementation:**
@@ -71,8 +74,8 @@ This endpoint should be called as Kubernetes liveliness probe
 
 A ``oarepo_heartbeat.liveliness_probe`` signal (with name ``oarepo.probe.liveliness``)
 is called during the readiness processing. Signal handler should return a response
-in the form of a tuple ``(status, messages)``. The ``status`` is the ``logical and`` of returned statuses
-and messages is the union of all messages.
+in the form of a tuple ``(name, status, data)``. The ``status`` is the ``logical and``
+of returned statuses and data are passed inside the element.
 
 **Initial implementation:**
 

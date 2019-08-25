@@ -33,11 +33,14 @@ def environ():
 
 def _collect_results(*values):
     total_status = True
-    total_messages = {}
-    for status, messages in values:
+    checks = {}
+    for name, status, data in values:
         total_status &= status
-        total_messages.update(messages)
+        checks[name] = {
+            **data,
+            'status': status
+        }
     return jsonify({
         'status': total_status,
-        'messages': total_messages
+        'checks': checks
     }, status=200 if total_status else 500)
