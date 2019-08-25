@@ -102,7 +102,9 @@ and the data are merged into one dictionary.
 Invenio usage:
 ==============
 
-To use this library on invenio, do not forget to add it to setup's blueprints:
+To use this library on invenio, do not forget to add it to setup's blueprints
+and define your own readiness & liveliness signal handlers as needed (for example,
+checking database, ES connectivity):
 
 .. code:: python
 
