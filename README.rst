@@ -43,7 +43,7 @@ in the form of a tuple ``(name, status, data)``. The ``status`` is the ``logical
 of returned statuses and data are passed inside the element. The following section
 will be added to the response:
 
-..code:: python
+.. code:: python
 
     response["checks"]["returned_name"] = {
         "status": "returned_status",
