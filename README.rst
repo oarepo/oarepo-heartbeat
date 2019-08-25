@@ -1,5 +1,5 @@
-Heartbeat module for Flask application and OAREPO Invenio repository
-====================================================================
+Heartbeat module for Flask applications and OAREPO Invenio repository
+========================================================================
 
 A heartbeat module for flask and OAREPO Invenio. It provides 3 endpoints:
 
