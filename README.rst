@@ -66,7 +66,7 @@ This endpoint should be called as Kubernetes liveliness probe
 
 A ``oarepo_heartbeat.liveliness_probe`` signal (with name ``oarepo.probe.liveliness``)
 is called during the readiness processing. Signal handler should return a response
-in the form of a tuple ``(status, messages)``. The 'status' is the ``logical and`` of returned statuses
+in the form of a tuple ``(status, messages)``. The ``status`` is the ``logical and`` of returned statuses
 and messages is the union of all messages.
 
 
@@ -95,7 +95,7 @@ a set of libraries present in the virtualenv and their versions.
 
 A ``oarepo_heartbeat.environ_probe`` signal (with name ``oarepo.probe.environ``)
 is called during the readiness processing. Signal handler should return a response
-as a tuple ``(status, {data})``. The 'status' is the ``logical and`` of returned statuses
+as a tuple ``(status, {data})``. The ``status`` is the ``logical and`` of returned statuses
 and the data are merged into one dictionary.
 
 
