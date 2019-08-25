@@ -40,7 +40,17 @@ This endpoint should be called as Kubernetes readiness probe
 A ``oarepo_heartbeat.readiness_probe`` signal (with name ``oarepo.probe.readiness``)
 is called during the readiness processing. Signal handler should return a response
 in the form of a tuple ``(name, status, data)``. The ``status`` is the ``logical and``
-of returned statuses and data are passed inside the element.
+of returned statuses and data are passed inside the element. The following section
+will be added to the response:
+
+..code:: python
+
+    "checks": {
+        "returned_name": {
+            "status": "returned_status",
+            **returned_data
+        }
+    }
 
 
 **Initial implementation:**
