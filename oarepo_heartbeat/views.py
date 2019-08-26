@@ -1,8 +1,10 @@
-from flask import Blueprint, jsonify
+import json
+
+from flask import Blueprint, jsonify, current_app
 
 from oarepo_heartbeat import readiness_probe, liveliness_probe, environ_probe
 
-blueprint = Blueprint('oarepo-heartbeat', __name__, url_prefix='/.well-known')
+blueprint = Blueprint('oarepo-heartbeat', __name__, url_prefix='/.well-known/heartbeat')
 
 
 @blueprint.route('/readiness')
@@ -25,10 +27,10 @@ def environ():
         status, values = x[1]
         total_status &= status
         data.update(values)
-    return jsonify({
+    return current_app.response_class(json.dumps({
         'status': total_status,
         **data
-    })
+    }))
 
 
 def _collect_results(*values):
@@ -40,7 +42,7 @@ def _collect_results(*values):
             **data,
             'status': status
         }
-    return jsonify({
+    return current_app.response_class(json.dumps({
         'status': total_status,
         'checks': checks
-    }, status=200 if total_status else 500)
+    }), status=200 if total_status else 500)
