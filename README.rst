@@ -146,6 +146,7 @@ checking database, ES connectivity):
 *ext.py:*
 
 .. code:: python
+
     from invenio_search import current_search_client
     from oarepo_heartbeat import liveliness_probe, readiness_probe
     from invenio_db import db
