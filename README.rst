@@ -153,7 +153,7 @@ checking database, ES connectivity):
 
     @liveliness_probe.connect
     @readiness_probe.connect
-    def database_liveliness_check(*args, **kwargs):
+    def database_check(*args, **kwargs):
         try:
             t1 = time.time()
             db.session.execute('select id from records_metadata limit 1').fetchall()
@@ -165,7 +165,7 @@ checking database, ES connectivity):
 
     @liveliness_probe.connect
     @readiness_probe.connect
-    def elasticsearch_liveliness_check(*args, **kwargs):
+    def elasticsearch_check(*args, **kwargs):
         try:
             t1 = time.time()
             current_search_client.indices.get_alias("*", request_timeout=10)
