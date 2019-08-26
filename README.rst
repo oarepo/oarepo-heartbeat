@@ -135,11 +135,41 @@ To use this library on invenio, do not forget to add it to setup's blueprints
 and define your own readiness & liveliness signal handlers as needed (for example,
 checking database, ES connectivity):
 
+*setup.py:*
+
 .. code:: python
 
     'invenio_base.blueprints': [
         'oarepo-heartbeat = oarepo_heartbeat.views:blueprint',
     ],
+
+*ext.py:*
+
+.. code:: python
+
+
+    @liveliness_probe.connect
+    @readiness_probe.connect
+    def database_liveliness_check(*args, **kwargs):
+        try:
+            t1 = time.time()
+            db.session.execute('select id from records_metadata limit 1').fetchall()
+            t2 = time.time()
+            return ('database', True, {'time': t2-t1})
+        except Exception as e:
+            return ('database', False, {'error': str(e)})
+
+
+    @liveliness_probe.connect
+    @readiness_probe.connect
+    def elasticsearch_liveliness_check(*args, **kwargs):
+        try:
+            t1 = time.time()
+            current_search_client.indices.get_alias("*", request_timeout=10)
+            t2 = time.time()
+            return ('elasticsearch', True, {'time': t2-t1})
+        except Exception as e:
+            return ('elasticsearch', False, {'error': str(e)})
 
 
 Flask usage:
