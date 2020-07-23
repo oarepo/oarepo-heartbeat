@@ -10,7 +10,7 @@ cache:
 
 env:
   matrix:
-    - REQUIREMENTS=devel EXTRAS=all
+    - REQUIREMENTS=release EXTRAS=tests
 
 python:
   - "3.6"
