@@ -11,4 +11,5 @@ environ_probe = signal('oarepo.probe.environ')
 environ_probe.connect(gather_libraries)
 environ_probe.connect(gather_python)
 
-__all__ = ('__version__', 'liveliness_probe', 'readiness_probe', 'environ_probe')
+__all__ = ('__version__', 'liveliness_probe',
+           'readiness_probe', 'environ_probe')

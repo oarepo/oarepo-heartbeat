@@ -4,10 +4,13 @@ from setuptools import find_packages, setup
 
 readme = open('README.rst').read()
 
-tests_require = [
-]
+tests_require = []
 
 extras_require = {
+    'tests': [
+        *tests_require,
+        'oarepo[tests-es7]'
+    ]
 }
 
 setup_requires = [
@@ -15,6 +18,8 @@ setup_requires = [
 ]
 
 install_requires = [
+    'blinker',
+    'Flask',
     'pip>=6.0.0'
 ]
 
