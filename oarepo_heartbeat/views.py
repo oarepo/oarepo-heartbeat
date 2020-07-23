@@ -1,29 +1,24 @@
 import json
 
-from flask import Blueprint, jsonify, current_app
+from flask import jsonify, current_app
 
 from oarepo_heartbeat import readiness_probe, liveliness_probe, environ_probe
 
-blueprint = Blueprint('oarepo-heartbeat', __name__, url_prefix='/.well-known/heartbeat')
 
-
-@blueprint.route('/readiness')
 def readiness():
-    data = [x[1] for x in readiness_probe.send(blueprint)]
+    data = [x[1] for x in readiness_probe.send()]
     return _collect_results(*data)
 
 
-@blueprint.route('/liveliness')
 def liveliness():
-    data = [x[1] for x in liveliness_probe.send(blueprint)]
+    data = [x[1] for x in liveliness_probe.send()]
     return _collect_results(*data)
 
 
-@blueprint.route('/environ')
 def environ():
     data = {}
     total_status = True
-    for x in environ_probe.send(blueprint):
+    for x in environ_probe.send():
         status, values = x[1]
         total_status &= status
         data.update(values)
