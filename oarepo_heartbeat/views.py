@@ -1,8 +1,8 @@
 import json
 
-from flask import jsonify, current_app
+from flask import current_app
 
-from oarepo_heartbeat import readiness_probe, liveliness_probe, environ_probe
+from oarepo_heartbeat import environ_probe, liveliness_probe, readiness_probe
 
 
 def readiness():
